@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# this is just a simple example of how you can get coactivation maps seeding from each coordinate in a giant list of coordinates. There are some hard paths here to substitute so be careful.
+
 
 #import necessary modules
 import os
