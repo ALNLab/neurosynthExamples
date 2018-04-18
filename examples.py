@@ -7,14 +7,14 @@ import os # this is sometimes helpful
 from neurosynth import Dataset
 from neurosynth import meta, decode, network
 
-# First we need to import dataset and tools with which to use neurosynth. Feel free to add your own.
+# First we need to import dataset and tools with which to use neurosynth.
 dataset = Dataset('/usr/local/lib/python2.7/site-packages/neurosynth/database.txt')
 dataset.add_features('/usr/local/lib/python2.7/site-packages/neurosynth/features.txt')
 
-# Here is an example for how to do coactivation analysis. Lets say you want to do a fine grained analysis where you get coavtivation with individual voxels in an ROI or something like that. This snippet of code will go through your list of coordinates (saved as a seperate text file), and get a coactivation for each coordinate (see code for formatting)
+# Here is an example for how to do coactivation analysis. Lets say you want to do a fine grained analysis where you get coavtivation with individual voxels in an ROI. This snippet of code will go through your list of coordinates (saved as a seperate text file), and get a coactivation for each coordinate (see code for formatting)
 inTextFile = '/Users/ateghipc/Desktop/spt/ROI/PT/PT_REVERSEINFERENCE_pFgA_z_FDR_0.01_BIN_MNI.txt';
 
-# now read in a text file of coordinates from 2mm MNI brain. Delimiter is single space. Fourth column is 'intensity' value of a binarized GM mask. Only coordinates with value of one are included (i.e. in a binarized mask). 
+# Delimiter is single space. Fourth column is 'intensity' value of a binarized GM mask. Only coordinates with value of one are included (i.e. in a binarized mask). 
 with open(inTextFile,'r') as reader :
     for line in reader :
         print(line)
@@ -51,7 +51,6 @@ ma.save_results('.', '/PTvsHG')
 # and what if you want to play around with FDR?
 feature_list = dataset.get_feature_names(['word recognition','speech production'])
 meta.analyze_features(dataset, feature_list, threshold=0.001, q=0.05, output_dir='/Users/ateghipc/Desktop/DualStreamUpdateFigs/manual/q001')
-
 
 # here's an example for classifying ROIs without getting your hands dirty
 from neurosynth.analysis import classify
